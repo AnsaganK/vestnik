@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load static i18n %}
+{% load vestnik_tags %}
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+<div class="main">
+    <h2 style="text-align: center;color: #5492be;">Изменение профиля</h2>
+    <form action="{% url 'reprofile_post' %}" method="post" class="reprofile_form">
+        {% csrf_token %}
+        <label for="1">Имя</label><input type="text" id="1" name="first_name" value="{{request.user.first_name}}">
+        <label for="">Фамилия</label><input type="text" name="last_name" value="{{request.user.last_name}}">
+        <label for="">Почта</label><input type="email" name="email" value="{{request.user.email}}">
+        <label for="">Дата рождения</label><input type="date" name="birth_date" value="{{request.user.profile.birth_date.year}}-{{request.user.profile.birth_date.month|DateValid}}-{{request.user.profile.birth_date.day|DateValid}}">
+        <label for="">Город</label><input type="text" name="city" value="{{request.user.profile.city}}">
+        <label for="">Моб.телефон</label><input type="text" name="mobile" value="{{request.user.profile.mobile}}">
+        <label for="">Место работы</label><input type="text" name="workPlace" value="{{request.user.profile.workPlace}}">
+        <label for="">Должность</label><input type="text" name="work" value="{{request.user.profile.work}}">
+        <label for="">Ученая степень</label><input type="text" name="education" value="{{request.user.profile.education}}">
+        <label for="">Почтовый индекс</label><input type="text" name="postCode" value="{{request.user.profile.postCode}}">
+        <input type="submit" value="Изменить">
+    </form>
+</div>
+
+{% endblock %}

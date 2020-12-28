@@ -1,0 +1,246 @@
+html{
+	height: 100%;
+}
+body{
+	margin:0px;
+	padding: 0px;
+	display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #f9f9f9;
+    /*background-image: url(back.png);
+    background-repeat: repeat-y;
+    background-size: 100%;
+    background-position: bottom;*/
+}
+.log{
+    color:#f7C300;
+}
+a{
+	text-decoration: none;
+}
+li{
+    list-style-type:none;
+}
+.search{
+	text-align:center; 
+}
+.translate{
+    color:white;
+}
+.translate:first-child{
+	border-radius:5px;
+	border:1px solid white;
+	padding:1px;
+}
+.search_row{
+	margin:10px 0px;
+}
+.head{
+flex: 0 0 auto;
+margin-bottom: 0px;
+}
+.content{
+flex: 1 0 auto;
+
+}
+.footer{
+	flex: 0 0 auto;
+}
+.header{
+    line-height:1;
+	color: white;
+    height: 150px;
+    background-color: #5680a7;
+    background-image: url(head.png);
+    width: 100%;
+    display: flex;
+    align-items: start;
+    padding-top: 14px;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+    padding-right: 10%;
+    padding-left: 10%;
+    margin-bottom: -41px;
+    margin-top: 0px;
+    padding-top: -10px;
+    box-sizing: border-box;
+    opacity: 1;
+    transition: opacity .2s;
+}
+
+.head_text{
+	color:#f7c300;
+	font-size: 24px;
+}
+
+.base_menu{
+	height:40px;
+	display:flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	list-style: none;
+	margin-left:7%;
+	margin-right: 7%;
+	margin-top: 0px;
+	background-color: #5680A7;
+	background-color: #608cb500;
+	box-sizing: border-box;
+	transition: background-color .3s
+}
+.series_menu{
+	display: none;
+    list-style-type: none;
+    background-color: #5680a7;
+    margin-top: 34px;
+    margin-left: -122px;
+    padding:10px;
+    position: absolute;
+}
+.series_menu li{
+	margin: -5px auto;
+}
+
+.menu_button:hover .series_menu{
+	display: inline-block;
+}
+
+.base_menu.fixed{
+	width: 100%;
+	margin-left:0%;
+	margin-right: 0%;
+	position: fixed;
+	background-color: #5b84b8b3;
+	box-shadow: 0px 0px 3px 0px;
+	top: 0%;
+}
+.base_menu.fixed:hover{
+	background-color: #608cb5;
+}
+.base_menu_li{
+	border-right:1px solid white;
+}
+.base_menu li:last-child{
+	border-right:0px solid white;
+}
+.base_menu_li a{
+	color: #d7d2ff;
+	margin-right:30px;
+	margin-left:30px;
+	margin-bottom:5px;
+	font-size: 25px;
+	display: inline-block;
+	/*font-family: 'Lobster', cursive;*/
+	font-family: 'Merienda';
+}
+.base_menu a:hover{
+	color:white;
+}
+
+.img_univer{
+	position: absolute;
+	opacity: .1;
+	z-index: -2;
+	margin-top: 130px;
+	width: 100%;
+	height: 100%;
+}
+.content{
+	margin: 0px 7%;
+	width:86%;
+	color:#0e093e;;
+}
+.content p{
+	font-size: 14px;
+	font-family: 'Verdana';
+	font-family: 'Roboto', sans-serif;
+}
+.content span{
+
+}
+.main{
+	width:100%;
+	border:1px solid #F6F5F5;
+	float:left;
+	background-color: white;
+	padding: 20px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	/*box-shadow: 0px 0px 1px;*/
+}
+.main_title{
+	text-align: center;
+}
+.main_content{
+	text-align: justify;
+}
+.sub_menu{
+	padding: 20px;
+	width:25%;
+	border:1px solid #F6F5F5;
+	float:right;
+	background-color: white;
+	box-sizing: border-box;
+	border-radius:10px;
+	/*box-shadow: 0px 0px 1px;*/
+}
+.sub_menu_ul li{
+	list-style-type: none;
+	border:1px solid white;
+	border-radius:10px;
+	margin-bottom:15px;
+	text-align:center;
+	    box-shadow: 0px 2px 2px;
+}
+.sub_menu_ul li:hover{
+    border:1px solid gray;
+    box-shadow:0px 0px 0px;
+}
+.sub_menu_a:first-child{
+display: inline-flex;
+    align-items: center;
+}
+.sub_menu_a_first{
+	border-right: 1px solid #608cb5;
+    padding-right: 45px;
+    margin: 10px;
+}
+.sub_menu_a{
+	height: 100%;
+    margin: 10px;
+    text-align:center;
+    color:gray;
+}
+.footer{
+	margin-top: 30px;
+	background-color:#5680A7 ;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding-bottom: 30px;
+}
+footer h3{
+
+}
+.ftr1 h3, .ftr2 h3, .ftr3 h3{
+	text-align: center;
+}
+.msf_multiselect_container textarea {
+    resize: none;
+    padding-left: 2px;
+    background-color: #eaebec;
+    border: 0px;
+    padding-top: 2px;
+    overflow: auto;
+        font-family: Arial, Helvetica, sans-serif;
+    color: #666;
+    font-size: 16px;
+}
+.language_local{
+    display:flex;
+}
+.language_li.active{
+    border;1px solid black;
+    border-radius:1px;
+}

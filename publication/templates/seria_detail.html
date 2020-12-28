@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'about' %}">{% trans 'Главная' %}</a></li>
+    <li class="breadcrumb-item">{{seria.name}}</li>
+  </ol>
+</nav>
+<div class="main">
+    <h3>{{seria.name}}</h3>
+    <h4>{% trans "Описание серии" %}:{{seria.description|safe}}</h4>
+    <hr>
+    {% if seria.sFiles.all %}
+    <ul>
+        <h3 style="text-align:center">All Files({{seria.name}})</h3>
+    {% for file in seria.sFiles.all %}
+        <li><a href="{{file.get_absolute_url}}">{{file.author}}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <h3  style="text-align:center">Sorry,the list empty</h3>
+    {% endif %}
+</div>
+{% endblock %}

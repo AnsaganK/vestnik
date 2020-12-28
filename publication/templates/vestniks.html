@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+<div class="main">
+    {% for v in vs %}
+    <h3><a href="{{v.file.url}}">{{ v.get_name }}</a></h3>
+    <hr>
+    {% endfor %}
+</div>
+{% endblock %}

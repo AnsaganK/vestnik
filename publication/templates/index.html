@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+<html>
+<head>
+	<title>{% block title %}Vestnik1{% endblock %}</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+	<link rel="shortcut icon" href="{% static 'icon_kgu.png' %}" type="image/png">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet">
+	{% block link %}{% endblock %}
+</head>
+<body>
+	<div class="head">
+	<div class="header">
+		<div class="logo">
+			<img src="{% static 'logo.png' %}" height="80%">
+			<div class="head_text">
+			<span class="head_text_title">{% trans 'Вестник филологии' %}</span>
+			<span class="head_text_content">{% trans 'КУ имени Ш. Валиханова' %}</span>
+		</div>
+		</div>
+		<div class="search">
+			<ul class="language_local">
+                                            {% get_current_language as LANGUAGE_CODE %}
+                                            {% get_available_languages as LANGUAGES %}
+                                            {% get_language_info_list for LANGUAGES as languages %}
+                                            {% for language in languages %}
+                                            <li class="language_li"><a href="/{{ language.code }}{{ request.get_full_path|slice:'3:' }}" class="language-link {% if language.code == LANGUAGE_CODE %}active {% endif %}" data-lang="{{language.code}}">{{language.code|upper}}</a></li>
+                                            {% endfor %}
+			</ul>
+			<!--<a href="#" class="translate">ENG</a> | <a href="#" class="translate">RUS</a> | <a href="#" class="translate">KAZ</a><br>-->
+			<form action="{% url 'search' %}" method="get">
+			<input id="search" required name="q" type="text" placeholder="{% trans 'Поиск' %}" autocomplete="off" class="search_row">
+
+				<button class="search_button" type="submit"><i class="fas fa-search"></i></button>
+				</form>
+			{% if user.is_authenticated %}
+			<a href="{% url 'cabinet' %}" class="log">{% trans 'Кабинет' %}</a> /
+			<a href="{% url 'logout' %}" class="log">{% trans 'Выход' %}</a>
+			{% else %}
+			<a href="{% url 'login' %}" class="log">{% trans 'Вход' %}</a> /
+			<a href="{% url 'signup' %}" class="log">{% trans 'Регистрация' %}</a>
+			{% endif %}
+		</div>
+	</div>
+	<div class="navigate">
+		<ul class="base_menu">
+			<!--
+
+			-->
+			{% for i in pages %}
+				<li class="base_menu_li {% if i.children %}menu_button{% endif %}"><a href="{% url 'detailPage' i.pk %}">{{ i.title }}</a>
+					{% if i.children %}
+						<ul class="series_menu">
+							{% for j in i.children.all %}
+								<li><a href="{% url 'detailPage' j.pk %}">{{ j.title }}</a></li>
+
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</li>
+			{% empty %}
+			<li><a href="">Empty</a></li>
+
+			{% endfor %}
+			<li class="base_menu_li menu_button"><a href="{% url 'archive' %}">{% trans "Архив" %}</a>
+							<ul class="series_menu">
+					<li><a href="{% url 'publications' %}">{% trans 'Архив публикации' %}</a></li>
+					<li><a href="{% url 'archive' %}">{% trans 'Архив вестников' %}</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	</div>
+	<div class="content">
+		{% block content %}
+		<div class="main" style="width:72%">
+
+			<h1 class="main_title">About</h1>
+			<div class="main_content">
+				<img src="{% static 'zhournal.png' %}" width="400px" style="float: right">
+
+				<p> 'Lorem Ipsum i simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'%}</p>
+				<p>Lorem Ipsum i simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'%}</p>
+				<p>Lorem Ipsum i simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'%}</p>
+				<p>Lorem Ipsum i simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'%}</p>
+
+
+				<h3>Why do we use it?</h3>
+<p>
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by aident, sometimes on purpose (injected humour and the like).</p>
+
+
+<h3>Where does it come from?</h3>
+<p>
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+<p>
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+
+<h3>Where can I get some?</h3>
+<p>
+There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+			%}</div>
+		</div>
+		<div class="sub_menu">
+			<ul>
+				<li><a href="" class="sub_menu_a "><span class="sub_menu_a_first">Добавить<img src="{% static 'send.jpg' %}" alt=""></span></a></li>
+				<li><a href="" class="sub_menu_a">Просмотреть</a></li>
+				<li><a href="" class="sub_menu_a"></a></li>
+				<li><a href="" class="sub_menu_a"></a></li>
+				<li><a href="" class="sub_menu_a"></a></li>
+			</ul>
+		</div>
+		{% endblock %}
+	</div>
+	<div class="footer">
+		<div class="ftr1"><h3>{% trans "Банковские реквизиты" %}</h3>
+			БИН 960840000681 <br>
+ИИК KZ61998JTB0000118553 <br>
+AO «Jysan Bank» <br>
+TSESKZKA <br>
+РГП на ПХВ «КГУ им. Ш. Уалиханова» <br>
+КБЕ 16 <br>
+Адрес оргкомитета:
+020000,<br> Республика Казахстан, Акмолинская обл.,<br> г. Кокшетау, ул. Абая, 76.<br> E-mail: vestnik-kgu@mail.ru. <br>Переписка с оргкомитетом ведется
+			<br>только по указанному выше <br>адресу электронной почты
+
+		</div>
+		<div class="ftr2"><h3>{% trans "Ссылки" %}</h3>
+	<ul>
+		<li><a href="{% url 'publications' %}">{% trans "Архив(публикации)" %}</a></li>
+		<li><a href="{% url 'archive' %}">{% trans "Архив(вестники)" %}</a></li>
+		<li><a href="{% url 'add_file' %}">{% trans "Добавить публикацию" %}</a></li>
+	</ul>
+		</div>
+		<div class="ftr3"><h3>{% trans "Контакты" %} </h3>
+Казахстан, Кокшетау ул. Абая 76<br>        mail@kgu.kz
+		</div>
+
+	</div>
+	<script>
+		$(window).scroll(function(){
+      if ($(this).scrollTop() > 107) {
+       	  $('.base_menu').addClass('fixed');
+       	  $('.content').css('margin-top',55);
+      } else {
+      	  $('.base_menu').removeClass('fixed');
+       	  $('.content').css('margin-top',10);
+      }
+});
+var mySelect = new MSFmultiSelect(
+ document.querySelector('.multiselect'),
+ {
+ appendTo: '#example',
+ width:200,
+ height:70,
+ // options here
+ }
+);
+	</script>
+</body>
+</html>

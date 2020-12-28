@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+<div class="main col-md-12 col-sm-8  col-xs-12">
+
+			<h3 class="main_title">Архив</h3>
+			<div class="main_content">
+				<table width="80%" id="archive_table" style="
+    margin-left: 10%;">
+        <tbody>
+
+        <tr>
+
+        </tr>
+        <tr>
+            <td class="archive_year">2020 год</td>
+            {% for i in 2020pub %}
+            <td><a href="{{i.file.url}}">№{{i.number}}</a><br></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td class="archive_year">2019 год</td>
+            {% for i in 2019pub %}
+            <td><a href="{{i.file.url}}">№{{i.number}}</a><br></td>
+            {% endfor %}
+
+        </tr>
+        <tr>
+            <td class="archive_year">2018 год</td>
+            {% for i in 2018pub %}
+            <td><a href="{{i.file.url}}">№{{i.number}}</a><br></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td class="archive_year">2017 год</td>
+            {% for i in 2017pub %}
+            <td><a href="{{i.file.url}}">№{{i.number}}</a><br></td>
+            {% endfor %}
+        </tr>
+    </tbody></table></div>
+		</div>
+{% endblock %}

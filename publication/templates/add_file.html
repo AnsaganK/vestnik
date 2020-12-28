@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+<div class="main">
+    {% if user.is_authenticated %}
+
+    {% if user.profile.full %}
+    <h3>Добавить публикацию</h3>
+    <form method="POST" enctype="multipart/form-data" class="add_file">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Добавить">
+    </form>
+    {% else %}
+    <h5>Ваш профиль заполнен не до конца, вернитесь в кабинет и заполните пустые поля</h5>
+    {% endif %}
+
+    {% else%}
+    <h5>Извините вы не<a href="{% url 'login' %}"> авторизованы</a></h5>
+    {% endif %}
+</div>
+{% endblock %}

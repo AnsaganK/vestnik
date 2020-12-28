@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static i18n %}
+
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+    {% include 'include/base_only_publication.html' %}
+
+<hr>
+    {% if not file.redactor %}
+        <p style="color:red">Этот файл еще не прошел проверку на ошибки</p>
+    {% endif %}
+    <form action="{% url 'update_antiplagiat' pk=file.pk %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <label for="">Антиплагиат</label>
+        <input type="checkbox" name = "antiplagiat" {% if not file.redactor %} disabled {% endif %}  {% if file.antiplagiat %}checked{% endif %}><br>
+        <label for="" >Процент антиплагиата</label>
+        <input type="text" name="antiplagiat_point" {% if not file.redactor %} disabled {% endif %}  {% if file.antiplagiat_point %}value="{{file.antiplagiat_point}}"{% endif %}><br>
+
+        <label for="">Файл антиплагиата</label>
+        <input type="file" name="antiplagiat_file" {% if not file.redactor %} disabled {% endif %} {% if file.antiplagiat_file %}value="{{file.antiplagiat_file}}"{% endif %} ><br>
+         {% if file.antiplagiat_file %}<a href="file.antiplagiat_file">Файл антиплагиата</a>{% endif %}
+        <button {% if not file.redactor %} disabled {% endif %}  type="submit">
+            Отправить
+        </button>
+    </form>
+</div>
+{% endblock %}

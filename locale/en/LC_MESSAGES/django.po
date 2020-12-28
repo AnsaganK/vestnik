@@ -1,0 +1,335 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-28 11:58+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\publication\templates\about.html:17
+#, fuzzy
+#| msgid "Отправить"
+msgid "Отправить статью"
+msgstr "Send"
+
+#: .\publication\templates\about.html:18 .\publication\templates\index.html:135
+#, fuzzy
+#| msgid "Просмотреть все публикации"
+msgid "Архив(публикации)"
+msgstr "All publications"
+
+#: .\publication\templates\about.html:19 .\publication\templates\index.html:136
+#, fuzzy
+#| msgid "Просмотреть все вестники"
+msgid "Архив(вестники)"
+msgstr "All bulletins"
+
+#: .\publication\templates\about.html:23
+msgid "Архив выпусков"
+msgstr "Publication archive"
+
+#: .\publication\templates\cabinet.html:9 .\publication\templates\index.html:42
+msgid "Кабинет"
+msgstr "Cabinet"
+
+#: .\publication\templates\cabinet.html:26
+#, fuzzy
+#| msgid "Отправить"
+msgid "Отправленные статьи"
+msgstr "Send publications"
+
+#: .\publication\templates\cabinet.html:43
+msgid "Вы еще ничего не добавили"
+msgstr "You haven't added anything yet"
+
+#: .\publication\templates\cabinet.html:47
+msgid "Изменить пароль"
+msgstr "Change password"
+
+#: .\publication\templates\cabinet.html:49
+msgid "Вы не "
+msgstr "you are not"
+
+#: .\publication\templates\cabinet.html:49
+msgid "авторизованы"
+msgstr "authorized"
+
+#: .\publication\templates\cabinet_antiplagiat.html:10
+#: .\publication\templates\cabinet_redactor.html:10
+#: .\publication\templates\cabinet_reviewer.html:10
+msgid "Личный кабинет"
+msgstr "Cabinet"
+
+#: .\publication\templates\cabinet_antiplagiat.html:10
+#: .\publication\templates\cabinet_redactor.html:10
+#: .\publication\templates\cabinet_reviewer.html:10
+msgid "Пользователь"
+msgstr "User"
+
+#: .\publication\templates\cabinet_antiplagiat.html:14
+#: .\publication\templates\cabinet_redactor.html:15
+#: .\publication\templates\cabinet_reviewer.html:14
+#, fuzzy
+#| msgid "На проверке"
+msgid "Статьи для проверки"
+msgstr "Waiting"
+
+#: .\publication\templates\cabinet_antiplagiat.html:21
+#: .\publication\templates\cabinet_antiplagiat.html:46
+#: .\publication\templates\cabinet_redactor.html:22
+#: .\publication\templates\cabinet_redactor.html:47
+#: .\publication\templates\cabinet_redactor.html:71
+#: .\publication\templates\cabinet_redactor.html:100
+#: .\publication\templates\cabinet_redactor.html:129
+#: .\publication\templates\cabinet_reviewer.html:21
+#: .\publication\templates\cabinet_reviewer.html:46
+#: .\publication\templates\cabinet_reviewer.html:75
+#: .\publication\templates\cabinet_reviewer.html:104
+msgid "Тема"
+msgstr "Topic"
+
+#: .\publication\templates\cabinet_antiplagiat.html:22
+#: .\publication\templates\cabinet_antiplagiat.html:47
+#: .\publication\templates\cabinet_redactor.html:23
+#: .\publication\templates\cabinet_redactor.html:48
+#: .\publication\templates\cabinet_redactor.html:72
+#: .\publication\templates\cabinet_redactor.html:101
+#: .\publication\templates\cabinet_redactor.html:130
+#: .\publication\templates\cabinet_reviewer.html:22
+#: .\publication\templates\cabinet_reviewer.html:47
+#: .\publication\templates\cabinet_reviewer.html:76
+#: .\publication\templates\cabinet_reviewer.html:105
+msgid "Авторы"
+msgstr "Authors"
+
+#: .\publication\templates\cabinet_antiplagiat.html:23
+#: .\publication\templates\cabinet_redactor.html:24
+#: .\publication\templates\cabinet_redactor.html:49
+#: .\publication\templates\cabinet_reviewer.html:23
+msgid "Дата"
+msgstr "Date"
+
+#: .\publication\templates\cabinet_antiplagiat.html:39
+#: .\publication\templates\cabinet_redactor.html:64
+#: .\publication\templates\cabinet_reviewer.html:39
+#, fuzzy
+#| msgid "Проверенные и опубликованные на сайте"
+msgid "Последние проверенные статьи"
+msgstr "Public files"
+
+#: .\publication\templates\cabinet_antiplagiat.html:48
+#: .\publication\templates\cabinet_redactor.html:73
+#: .\publication\templates\cabinet_redactor.html:102
+#: .\publication\templates\cabinet_redactor.html:131
+#: .\publication\templates\cabinet_reviewer.html:48
+#: .\publication\templates\cabinet_reviewer.html:77
+#: .\publication\templates\cabinet_reviewer.html:106
+msgid "Дата отправки"
+msgstr "Send date"
+
+#: .\publication\templates\cabinet_antiplagiat.html:49
+#: .\publication\templates\cabinet_redactor.html:74
+#: .\publication\templates\cabinet_redactor.html:103
+#: .\publication\templates\cabinet_redactor.html:132
+#: .\publication\templates\cabinet_reviewer.html:49
+#: .\publication\templates\cabinet_reviewer.html:78
+#: .\publication\templates\cabinet_reviewer.html:107
+msgid "Дата проверки"
+msgstr "Waiting date"
+
+#: .\publication\templates\cabinet_redactor.html:14
+#, fuzzy
+#| msgid "Просмотреть все вестники"
+msgid "Добавить вестник"
+msgstr "Add vestnik"
+
+#: .\publication\templates\cabinet_redactor.html:40
+msgid "Статьи для проверки оплаты"
+msgstr "Articles for payment verification"
+
+#: .\publication\templates\cabinet_redactor.html:93
+msgid "На доработке"
+msgstr "On completion"
+
+#: .\publication\templates\cabinet_redactor.html:122
+msgid "Отказано"
+msgstr "Denied"
+
+#: .\publication\templates\cabinet_reviewer.html:68
+msgid "Отправленные на доработку"
+msgstr "Submitted for revision"
+
+#: .\publication\templates\cabinet_reviewer.html:97
+msgid "Отказанные"
+msgstr "Rejected"
+
+#: .\publication\templates\include\base_only_publication.html:6
+#: .\publication\templates\seria_detail.html:10
+msgid "Главная"
+msgstr "General"
+
+#: .\publication\templates\index.html:22
+msgid "Вестник филологии"
+msgstr "Philology Bulletin"
+
+#: .\publication\templates\index.html:23
+msgid "КУ имени Ш. Валиханова"
+msgstr "KU named after Sh. Valikhanov"
+
+#: .\publication\templates\index.html:37
+msgid "Поиск"
+msgstr "Search"
+
+#: .\publication\templates\index.html:43
+msgid "Выход"
+msgstr "Log Out"
+
+#: .\publication\templates\index.html:45
+msgid "Вход"
+msgstr "Log In"
+
+#: .\publication\templates\index.html:46
+msgid "Регистрация"
+msgstr "Registration"
+
+#: .\publication\templates\index.html:70
+msgid "Архив"
+msgstr "Archive"
+
+#: .\publication\templates\index.html:72
+msgid "Архив публикации"
+msgstr "Archive publications"
+
+#: .\publication\templates\index.html:73
+#, fuzzy
+#| msgid "Просмотреть все вестники"
+msgid "Архив вестников"
+msgstr "All vestniks"
+
+#: .\publication\templates\index.html:121
+msgid "Банковские реквизиты"
+msgstr "Bank rekvisits"
+
+#: .\publication\templates\index.html:133
+msgid "Ссылки"
+msgstr "Links"
+
+#: .\publication\templates\index.html:137
+#, fuzzy
+#| msgid "Просмотреть все публикации"
+msgid "Добавить публикацию"
+msgstr "Add publications"
+
+#: .\publication\templates\index.html:140
+msgid "Контакты"
+msgstr "Contacts"
+
+#: .\publication\templates\publications.html:28
+msgid "Фильтр"
+msgstr "Filter"
+
+#: .\publication\templates\publications.html:31
+msgid "Год"
+msgstr "Year"
+
+#: .\publication\templates\publications.html:38
+msgid "Месяц"
+msgstr "Month"
+
+#: .\publication\templates\search_result.html:5
+#: .\publication\templates\search_result.html:17
+msgid "Результаты поиска"
+msgstr "Search results"
+
+#: .\publication\templates\seria_detail.html:16
+msgid "Описание серии"
+msgstr "Series description"
+
+#~ msgid "Просмотреть все публикации"
+#~ msgstr "View publications"
+
+#~ msgid "Просмотреть все вестники"
+#~ msgstr "View vestniks"
+
+#~ msgid "Автор"
+#~ msgstr "Author"
+
+#~ msgid "Файл"
+#~ msgstr "File"
+
+#, fuzzy
+#~| msgid "Просмотреть все публикации"
+#~ msgid "Нет отправленных публикации"
+#~ msgstr "No send Publications"
+
+#, fuzzy
+#~| msgid "Просмотреть все публикации"
+#~ msgid "Нет опубликованных публикации"
+#~ msgstr "No public files"
+
+#~ msgid "Извините вы не "
+#~ msgstr "You not"
+
+#~ msgid "Статус"
+#~ msgstr "Status"
+
+#~ msgid "Предметы"
+#~ msgstr "Series"
+
+#~ msgid "Рецензенты"
+#~ msgstr "Reviewer"
+
+#~ msgid "Комментарии"
+#~ msgstr "Comments"
+
+#~ msgid "Проверено"
+#~ msgstr "Publicate"
+
+#~ msgid "Сохранить"
+#~ msgstr "Save"
+
+#, fuzzy
+#~| msgid "Изменить пароль"
+#~ msgid "Изменить"
+#~ msgstr "Change password"
+
+#~ msgid "О журнале"
+#~ msgstr "About"
+
+#~ msgid "Серии"
+#~ msgstr "Series"
+
+#~ msgid "Ред.коллегия"
+#~ msgstr "Redactor"
+
+#~ msgid "Этика"
+#~ msgstr "Etics"
+
+#~ msgid "Правила"
+#~ msgstr "Rules"
+
+#~ msgid "Ссылка"
+#~ msgstr "Link"
+
+#, fuzzy
+#~| msgid "Серии"
+#~ msgid "Серия"
+#~ msgstr "Series"
+
+#~ msgid "Название серии"
+#~ msgstr "Series name"
+
+#~ msgid "Some translatable text"
+#~ msgstr "Text"

@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+Search
+{% endblock %}
+{% block content %}
+<div class="main">
+    {% trans "Кабинет" %}
+    <hr>
+    {% if user.is_authenticated %}
+    <p>Имя:{{user.first_name}}</p>
+    <p>Фамилия:{{user.last_name}}</p>
+    <p>Почта:{{user.email}}</p>
+    <p>Дата рождения:{% if user.profile.birth_date %}{{user.profile.birth_date}}{% else %}{% endif %}</p>
+    <p>Город:{{user.profile.city}}</p>
+    <p>Мобильный:{{user.profile.mobile}}</p>
+    <p>Место работы: {{ user.profile.workPlace }}</p>
+    <p>Должность: {{ user.profile.work }}</p>
+    <p>Ученая степень: {{ user.profile.education }}</p>
+    <p>Почтовый индекс: {{ user.profile.postCode }}</p>
+
+    {% if user.profile.full %}<p style="color:green">Все поля профиля заполнены</p>{% else %}<p style="color:red">Для того что бы отправить статью заполните свой профиль</p>{% endif %}
+    <hr width="100px" style="display: inline-block;">
+    <p><a href="{% url 'reprofile' %}">Редактировать/заполнить профиль</a></p>
+    <h4 style="text-align:center">{% trans "Отправленные статьи" %}</h4>
+
+    <table border="1" style="
+    width: 1120px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #5492be;
+">
+        {% for file in files %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td><a href="{{file.get_absolute_url}}">{{ file.topic }}</a></td>
+            <td>{{ file.date }}</td>
+            <td>{{ file.status }}</td>
+            <td><a href="{{file.file.url}}">Скачать</a></td>
+        </tr>
+        {% empty %}
+            <h5 style="text-align:center;color:gray">{% trans "Вы еще ничего не добавили" %}</h5>
+        {% endfor %}
+    </table>
+
+    <hr><p><a href="{% url 'password_change' %}">{% trans "Изменить пароль" %}</a></p>
+    {% else %}
+    <h1>{% trans "Вы не " %} <a href="{% url 'login' %}"> {% trans "авторизованы" %}</a></h1>
+    {% endif %}
+</div>
+{% endblock %}

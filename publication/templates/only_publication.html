@@ -1,0 +1,173 @@
+{% extends "index.html" %}
+{% load static i18n %}
+
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+
+
+
+    {% include 'include/base_only_publication.html' %}
+    {% if file.public %}
+    {% else %}
+    {% if user.groups.all.0.name == 'Redactors' %}
+    <hr>
+
+    <div class="tabs">
+    <input type="radio" name="inset" value="" id="tab_1" {% if file.redactor %}checked{% endif %}>
+    <label for="tab_1">Без ошибок</label>
+
+    <input type="radio" name="inset" value="" id="tab_2" {% if file.redactor_return %}checked{% endif %}>
+    <label for="tab_2">На доработку</label>
+
+    <input type="radio" name="inset" value="" id="tab_3" {% if file.redactor_error %}checked{% endif %}>
+    <label for="tab_3">Отказ</label>
+
+
+    <div id="txt_1">
+        <form action="{% url 'update_redactor' pk=file.pk %}" method="POST">
+        {% csrf_token %}
+        <label for="">Редактор</label>
+        <input type="checkbox" name = "redactor" {% if file.redactor %}checked{% endif %}><br>
+
+        <button type="submit">
+            Отправить
+        </button>
+    </form>
+    </div>
+    <div id="txt_2">
+        <form action="{% url 'update_redactor' pk=file.pk %}" method="POST">
+        {% csrf_token %}
+        <label for="">Возврат</label>
+        <input type="checkbox" name = "redactor_return" {% if file.redactor_return %}checked{% endif %}><br>
+            <textarea  name="redactor_return_text" >{% if file.redactor_return_text %}{{file.redactor_return_text}}"{% endif %}</textarea><br>
+        <button type="submit">
+            Отправить
+        </button>
+    </form>
+    </div>
+    <div id="txt_3">
+        <form action="{% url 'update_redactor' pk=file.pk %}" method="POST">
+        {% csrf_token %}
+        <label for="">Не соответсвует требованиям</label>
+        <input type="checkbox" name = "redactor_error" {% if file.redactor_error %}checked{% endif %}><br><br>
+       <textarea  name="redactor_error_text" >{% if file.redactor_error_text %}{{file.redactor_error_text}}"{% endif %}</textarea><br>
+        <button type="submit">
+            Отправить
+        </button>
+    </form>
+    </div>
+</div>
+    {% endif %}
+{% if payload_img  %}
+            <div style="margin-top:30px"  class="alert alert-success">
+                Публикация оплачена. <a href="{{file.payload_img.url}}" download>Проверить</a>
+                <hr>
+                <form action="{% url 'update_payload' file.pk %}" method="POST">
+                    {% csrf_token %}
+                    <label for="">Оплата валидна</label><input type="checkbox" {% if file.payload %} checked {% endif %} name="payload"><br>
+                    <button type="submit">Отправить</button>
+                </form>
+                <hr>
+                <form action="{% url 'update_payload' file.pk %}" method="POST">
+                    {% csrf_token %}
+                    <label for="">Оплата невалидна</label><input type="checkbox" {% if file.payload_error %} checked {% endif %} name="payload_error"><br>
+                    <label for="">Причина отказа в приеме оплаты</label><br><textarea style="height:200px" type="text" name="payload_error_text" >{% if file.payload_error_text %} {{file.payload_error_text}} {% endif %}</textarea><br>
+
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
+            {% endif %}
+
+
+    {% if user.groups.all.0.name == 'Antiplagiat' %}
+    <hr>
+    {% if not file.redactor %}
+        <p style="color:red">Этот файл еще не прошел проверку на ошибки</p>
+    {% endif %}
+    <form action="{% url 'update_antiplagiat' pk=file.pk %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <label for="">Антиплагиат</label>
+        <input type="checkbox" name = "antiplagiat" {% if not file.redactor %} disabled {% endif %}  {% if file.antiplagiat %}checked{% endif %}><br>
+        <label for="" >Процент антиплагиата</label>
+        <input type="text" name="antiplagiat_point" {% if not file.redactor %} disabled {% endif %}  {% if file.antiplagiat_point %}value="{{file.antiplagiat_point}}"{% endif %}><br>
+
+        <label for="">Файл антиплагиата</label>
+        <input type="file" name="antiplagiat_file" {% if not file.redactor %} disabled {% endif %} {% if file.antiplagiat_file %}value="{{file.antiplagiat_file}}"{% endif %} ><br><br>
+        {% if file.antiplagiat_file %}<a href="{{file.antiplagiat_file.url}}" download>Файл антиплагиата</a>{% endif %}<br>
+        <button {% if not file.redactor %} disabled {% endif %}  type="submit">
+            Отправить
+        </button>
+    </form>
+    {% endif %}
+
+
+
+
+    {% if user.groups.all.0.name == 'Reviewers' %}
+    {% if not file.antiplagiat %}
+        <p style="color:red">Этот файл еще не прошел проверку на антиплагиат</p>
+    {% else %}
+        <hr>
+    <div class="tabs">
+    <input type="radio" name="inset" value="" id="tab_1" {% if file.reviewer %}checked{% endif %}>
+    <label for="tab_1">Без ошибок</label>
+
+    <input type="radio" name="inset" value="" id="tab_2" {% if file.reviewer_return %}checked{% endif %}>
+    <label for="tab_2">На доработку</label>
+
+    <input type="radio" name="inset" value="" id="tab_3" {% if file.reviewer_error %}checked{% endif %}>
+    <label for="tab_3">Отказ</label>
+
+
+    <div id="txt_1">
+        <form action="{% url 'update_reviewer' pk=file.pk %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <label for="">Рецензент</label>
+        <input type="checkbox" name = "reviewer" {% if file.reviewer %}checked{% endif %}><br>
+        <input type="file" name = "reviewer_file"><br><br>
+            {% if file.reviewer and file.reviewer_file %}<a href="{{file.reviewer_file.url}}" download>Файл рецензирования</a><br>{% endif %}
+        <button type="submit">
+            Отправить
+        </button>
+    </form>
+    </div>
+    <div id="txt_2">
+        <form action="{% url 'update_reviewer' pk=file.pk %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <label for="">Возврат</label>
+        <input type="checkbox" name = "reviewer_return" {% if file.reviewer_return %}checked{% endif %}><br>
+            <textarea  name="reviewer_return_text" >{% if file.reviewer_return_text %}{{file.reviewer_return_text}}"{% endif %}</textarea>
+            <br>
+            <input type="file" name = "reviewer_file"><br><br>
+            {% if file.reviewer_return and file.reviewer_file %}<a href="{{file.reviewer_file.url}}" download>Файл рецензирования</a><br>{% endif %}
+
+        <button type="submit">
+            Отправить
+        </button>
+    </form>
+    </div>
+    <div id="txt_3">
+        <form action="{% url 'update_reviewer' pk=file.pk %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <label for="">Не соответсвует требованиям</label>
+        <input type="checkbox" name = "reviewer_error" {% if file.reviewer_error %}checked{% endif %}><br>
+            <textarea  name="reviewer_error_text" >{% if file.reviewer_error_text %}{{file.reviewer_error_text}}"{% endif %}</textarea>
+            <br>
+            <input type="file" name = "reviewer_file"><br><br>
+            {% if file.reviewer_error and file.reviewer_file %}<a href="{{file.reviewer_file.url}}" download>Файл рецензирования</a><br>{% endif %}
+
+        <button type="submit">
+            Отправить
+        </button>
+    </form>
+    </div>
+</div>
+    {% endif %}
+    {% endif %}
+
+
+{% endif %}
+</div>
+{% endblock %}

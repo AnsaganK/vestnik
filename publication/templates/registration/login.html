@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<div class="main">
+
+  <div class="sign">
+  <h3>Авторизация</h3>
+{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+  {% else %}
+    <p>Please login to see this page.</p>
+  {% endif %}
+{% endif %}
+
+
+{% if user.is_authenticated %}
+  You're authtorization, <a href="{%url 'logout'%}">Logout</a>
+  <p><a href="{% url 'password_change' %}">Password Change</a></p>
+  {% else %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<div class="form-group">
+    <label for="formGroupExampleInput">Логин</label>
+    <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Пароль</label>
+    <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+  </div>
+
+<input type="submit" value="Войти" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+    <br>
+  <p><a href="{% url 'signup' %}">Нет аккаунта,зарегистрируйтесь</a></p>
+  {% endif %}
+{# Assumes you setup the password_reset view in your URLconf #}
+</div>
+</div>
+{% endblock %}

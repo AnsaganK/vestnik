@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+Add_vestnik
+{% endblock %}
+{% block content %}
+<div class="main">
+    {% if user.is_authenticated %}
+    <h3>Добавление вестника</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Добавить">
+    </form>
+    {%else%}
+    <h5>Извините вы не<a href="{% url 'login' %}"> авторизованы</a></h5>
+    {%endif%}
+</div>
+{% endblock %}

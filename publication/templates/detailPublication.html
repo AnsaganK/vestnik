@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load static i18n %}
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'about' %}">{% trans 'Главная' %}</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'publications' %}">Архив</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{file.author.first_name}} {{file.author.last_name}}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{file.topic}}</li>
+  </ol>
+</nav>
+
+<div class="main">
+    <div class="detail_publications">
+        <div class="detail_info">
+            <h4>{{file.topic}}</h4>
+            <p>{{ file.author.last_name }} {{ file.author.first_name }}({{ file.soauthor }})</p>
+            <p>{{ file.description }}</p>
+           <a href="{{file.file.url}}" download>
+               Скачать электронную версию публикации
+           </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "Результаты поиска" %}
+{% endblock %}
+{% block content %}
+<div class="main">
+    <form action="/ru/search" method="get" style="/* height: 43px; */display: flex;">
+			<input id="search" name="q" type="text" required placeholder="Поиск" value="{{query}}" autocomplete="off" class="search_row" style="border-radius:0px;/* height: 43px; *//* position: relative; */margin: 0;/* height: 45px; */">
+            <button type="submit" class="btn btn-primary btn-sm" style="
+    height: 23px;
+    margin: 0px;
+    padding: 0px;
+">поиск</button>
+    </form>
+    {% trans "Результаты поиска" %}({{count}})
+    {% for file in files %}
+    <ul class="list-group">
+        <li class="list-group-item" style="margin:5px;"><h5><a href="{{file.get_absolute_url}}">{{ file.topic }}</a>({{file.author.get_full_name}})</h5>
+            </li>
+    </ul>
+    {% endfor %}
+    {% include "include/pagination.html" with page=files %}
+</div>
+{% endblock %}

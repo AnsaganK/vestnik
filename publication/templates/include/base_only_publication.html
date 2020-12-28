@@ -1,0 +1,175 @@
+
+{% load static i18n %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'about' %}">{% trans 'Главная' %}</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'publications' %}">Архив</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{file.author.first_name}} {{file.author.last_name}}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{file.topic}}</li>
+  </ol>
+</nav>
+
+<div class="main">
+    <div class="detail_publications">
+        <div class="detail_info">
+            <h4>{{file.topic}}</h4>
+            <p>{{ file.author.last_name }} {{ file.author.first_name }}({{ file.soauthor }})</p>
+            <p>{{ file.description }}</p>
+           <a href="{{file.file.url}}" download>
+               Скачать электронную версию публикации
+           </a>
+            {% if bool %}
+    <div style="margin-top:30px" class="alert alert-success">Ваша публикация прошла все этапы.<hr> Можете оплатить по данному счету и отправить чек
+        <br><br>
+        <form action="{% url 'update_payload_img' file.pk %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <input type="file" name="payload_img"> <br><br><button type="submit">Отправить</button>
+        </form></div>
+        {% endif %}
+            {% if bool2 and not file.payload_error %}
+            <div style="margin-top:30px"  class="alert alert-success">Файл принят, ждите сообщения. <a href="{{file.payload_img.url}}" download>Ваш файл</a><hr>
+            Если же вы хотите заменить файл оплаты, выберите другой файл<form action="{% url 'update_payload_img' file.pk %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <input type="file" name="payload_img"> <br><br><button type="submit">Отправить</button>
+        </form>
+            </div>
+            {% endif %}
+
+            {% if file.redactor_return %}
+            <div class="return_block">
+            <p>Ваш файл был отправлен на доработку редактором</p>
+                <hr>
+            <p>Причина: {% if file.redactor_return_text %}{{file.redactor_return_text}}{% endif %}
+            {% if file.redactor_return_file %}{{redactor_return_text}}{% endif %}
+            </p>
+                <p>Отправить исправленную статью:
+                    <form action="{% url 'update_file_redactor' pk=file.pk %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                        <input type="file" name="file"><br><hr>
+                        <button type="submit">Отправить</button>
+                    </form>
+                </p>
+            </div>
+            {% endif %}
+
+                {% if file.redactor_error %}
+            <div class="error_block">
+            <p>Было отказано в публикации вашей статьи</p>
+                <hr>
+            <p>Причина: {% if file.redactor_error_text %}{{file.redactor_error_text}}{% endif %}
+            {% if file.redactor_return_file %}{{redactor_return_text}}{% endif %}
+            </p>
+            </div>
+            {% endif %}
+
+            {% if file.antiplagiat_point < 70 %}
+            <div class="error_block">
+            <p>Было отказано в публикации вашей статьи</p>
+                <hr>
+            <p>Причина: процент антиплагиата ниже допустимой величины - {{file.antiplagiat_point}}%
+                {% if file.antiplagiat_file %}<br><a href="{{file.antiplagiat_file.url}}" download>Скачать файл антиплагиата</a>{% endif %}
+            </p>
+            </div>
+            {% endif %}
+
+            {% if file.reviewer_return %}
+            <div class="return_block">
+            <p>Ваш файл был отправлен на доработку рецензентом</p>
+                <hr>
+            <p>Причина: {% if file.reviewer_return_text %}{{file.reviewer_return_text}}{% endif %}
+            {% if file.reviewer_file %}<a href="{{file.reviewer_file.url}}" download>Скачать рецензию</a>{% endif %}
+            </p>
+                <p>Отправить исправленную статью:
+                    <form action="{% url 'update_file_reviewer' pk=file.pk %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                        <input type="file" name="file"><br><hr>
+                        <button type="submit">Отправить</button>
+                    </form>
+                </p>
+            </div>
+            {% endif %}
+
+                {% if file.reviewer_error %}
+            <div class="error_block">
+            <p>Было отказано в публикации вашей статьи</p>
+                <hr>
+            <p>Причина: {% if file.reviewer_error_text %}{{file.reviewer_error_text}}{% endif %}
+            {% if file.reviewer_file %}<a href="{{file.reviewer_file.url}}" download>Скачать рецензию</a>{% endif %}
+            </p>
+            </div>
+            {% endif %}
+
+
+
+
+            {% if file.payload %}
+            <div style="margin-top:30px"  class="alert alert-success">
+               <p>Оплата была проверена, ждите публикации своей статьи</p>
+            </div>
+            {% endif %}
+
+
+            {% if file.payload_error %}
+            <div style="margin-top:30px"  class="alert alert-danger">
+                <p>Ваша оплата не прошла валидацию</p>
+                <hr>
+                <p>Причина:{{file.payload_error_text}}</p>
+                <p>Отправьте чек с исправлениями на данную форму</p>
+               <form action="{% url 'update_payload_img' file.pk %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <input type="file" name="payload_img"> <br><br><button type="submit">Отправить</button>
+        </form>
+            </div>
+            {% endif %}
+        </div>
+
+
+{% if not view_step %}
+<div class="detail_step">
+    <h4>Этапы</h4>
+    <table cellpadding="2px">
+        <tr>
+            <td><div style="background-color:#a8eab7;width:10px;height:10px;display:inline-block"></div> - без ошибок</td>
+            <td><div style="background-color:#ffeeba;width:10px;height:10px;display:inline-block"></div> - на доработку</td>
+        </tr>
+        <tr>
+            <td><div style="background-color:#f5c6cb;width:10px;height:10px;display:inline-block"></div> - отказ</td>
+            <td><div style="background-color:whitesmoke;width:10px;height:10px;display:inline-block"></div> - в ожидании</td>
+        </tr>
+    </table>
+    <table class="table table-sm" >
+    <tr class="table-success"><td>Поступило в редакцию</td><td>{{file.date}}</td><td></td></tr>
+
+
+        <tr {% if file.redactor %}class="table-success"{% endif %}
+        {% if file.redactor_return %}class="table-warning"{% endif %}
+        {% if file.redactor_error %}class="table-danger"{% else %}class="time"{% endif %}><td>Редактор</td><td>{% if file.redactor_update_time %}{{file.redactor_update_time}}{% endif %}</td><td></td></tr>
+
+        <tr {% if file.antiplagiat_point >= 70 %}class="table-success"{% endif %}
+        {% if file.antiplagiat_point < 70 %}class="table-danger"{% endif %} {% if file.antiplagiat_point == None %}class="time"{% endif %} ><td>Антиплагиат</td><td>{% if file.antiplagiat_update_time %}{{file.antiplagiat_update_time}}{% endif %}</td><td>{% if file.antiplagiat_file %}<a
+            href="{{file.antiplagiat_file.url}}" download><svg width="1em" height="1em" viewBox="0 0 16 16" style="color:blue" class="bi bi-file-earmark-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+            <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+            <path fill-rule="evenodd" d="M8 6a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 10.293V6.5A.5.5 0 0 1 8 6z"/>
+             </svg></a>{% endif %}</td>
+         </tr>
+
+        <tr {% if file.reviewer %}class="table-success"{% endif %}
+        {% if file.reviewer_return %}class="table-warning"{% endif %}
+        {% if file.reviewer_error %}class="table-danger"{% else %} class="time" {% endif %} ><td>Рецензент</td><td> {% if file.reviewer_update_time %}{{file.reviewer_update_time}}{% endif %}</td><td>{% if file.reviewer_file %}<a
+            href="{{file.reviewer_file.url}}"><svg width="1em" height="1em" viewBox="0 0 16 16" style="color:blue" class="bi bi-file-earmark-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+  <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+  <path fill-rule="evenodd" d="M8 6a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 10.293V6.5A.5.5 0 0 1 8 6z"/>
+</svg></a>{% endif %}</td>
+    </tr>
+
+<tr {% if file.payload %}class="table-success"{% else %}class="time"{% endif %}><td>Оплата</td><td>{% if file.payload_update_time %}{{file.payload_update_time}}{% endif %}</td><td></td></tr>
+
+        </table>
+    
+</div>
+        {% endif %}
+
+    </div>

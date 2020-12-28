@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+<div class="main" style="width:72%;border-right: 1px solid #e9e9e9;">
+	<h3 style="text-align:center;">Все публикации</h3>
+    <ul class="file-group">
+		{% for file in files %}
+        <li class="file-group-item" style="margin:5px;">
+				<a href="{% url 'publication' file.pk %}">
+					<img src="{% static 'file_icon3.png' %}" width="100" alt="">
+					<p>{{ file.topic }}<br>
+						<span>{{file.author.get_full_name}}</span></p>
+				</a>
+
+            </li>
+		{% endfor %}
+
+    </ul>
+
+	<hr>
+{% include "include/pagination.html" with page=files %}
+</div>
+<div class="sub_menu">
+	{% trans "Фильтр" %}
+	<hr>
+	<form action="{% url 'filter' %}" method="get" name="filter">
+	{% trans "Год" %}
+	<ul>
+		{% for  year in years %}
+        <li><input type="checkbox" name="year" {% if year in get_years %}checked{% endif %} value="{{year}}"><span>{{year}}</span></li>
+		{% endfor %}
+	</ul>
+
+		{% trans "Месяц" %}
+	<ul>
+		{% for month in months %}
+        <li><input type="checkbox" name="month" {% if month in get_month %}checked{% endif %} value="{{month}}"><span>{{month}}</span></li>
+		{% endfor %}
+	</ul>
+
+		<input type="submit" value="Фильтровать">
+</form>
+</div>
+
+{% endblock %}

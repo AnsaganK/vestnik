@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+About
+{% endblock %}
+{% block content %}
+<div class="main">
+
+			<h2 class="main_title">{{title}}</h2>
+			<div class="main_content"> {{content|safe}}</p>
+			</div>
+		</div>
+{% endblock %}

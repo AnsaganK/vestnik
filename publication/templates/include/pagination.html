@@ -1,0 +1,67 @@
+
+{% load i18n %}
+<nav aria-label="Page navigation example" style="display:table;margin:0 auto;">
+
+    <ul class="pagination">
+        {% if page.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.previous_page_number }}">Пред.</a>
+        </li>
+                {% if page.number == page_num and page.number|add:'-4' > 0 %}
+                <li class="page-item">
+                    <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.number|add:'-4'}}">{{ page.number|add:'-4'}}</a>
+                </li>
+                {% endif %}
+                {% if page.number|add:'1' >= page_num and page.number|add:'-3' > 0 %}
+                <li class="page-item">
+                    <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.number|add:'-3'}}">{{ page.number|add:'-3'}}</a>
+                </li>
+                {% endif %}
+
+                {% if page.number|add:'-2' > 0 %}
+                <li class="page-item">
+                    <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.number|add:'-2'}}">{{ page.number|add:'-2'}}</a>
+                </li>
+                {% endif %}
+        <li class="page-item">
+            <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.previous_page_number }}">{{page.previous_page_number}}</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link">Пред.</a>
+        </li>
+        {% endif %}
+
+        <li class="page-item active"><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.number }}">{{page.number}}</a></li>
+
+        {% if page.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.next_page_number }}">{{page.next_page_number}}</a>
+        </li>
+                {% if page.number|add:'2' <= page_num %}
+                <li class="page-item">
+                    <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.number|add:'2'}}">{{ page.number|add:'2'}}</a>
+                </li>
+                {% endif %}
+
+                {% if page.number|add:'3' <= page_num and page.number <= 2 %}
+                <li class="page-item">
+                    <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.number|add:'3'}}">{{ page.number|add:'3'}}</a>
+                </li>
+                {% endif %}
+
+                {% if page.number|add:'4' <= page_num and page.number <= 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.number|add:'4'}}">{{ page.number|add:'4'}}</a>
+                </li>
+                {% endif %}
+        <li class="page-item">
+            <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}{{get_years}}{{get_month}}page={{ page.next_page_number }}">След.</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link">След.</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>

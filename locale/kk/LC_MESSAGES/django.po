@@ -1,0 +1,299 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-28 11:58+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: .\publication\templates\about.html:17
+msgid "Отправить статью"
+msgstr "Мақаланы жіберу"
+
+#: .\publication\templates\about.html:18 .\publication\templates\index.html:135
+msgid "Архив(публикации)"
+msgstr "Мақалалар архиві"
+#: .\publication\templates\about.html:19 .\publication\templates\index.html:136
+#, fuzzy
+#| msgid "Просмотреть все вестники"
+msgid "Архив(вестники)"
+msgstr "Вестник(Архив)"
+
+#: .\publication\templates\about.html:23
+msgid "Архив выпусков"
+msgstr "Басылым архивтары"
+
+#: .\publication\templates\cabinet.html:9 .\publication\templates\index.html:42
+msgid "Кабинет"
+msgstr "Жеке кабинет"
+
+#: .\publication\templates\cabinet.html:26
+msgid "Отправленные статьи"
+msgstr "Жіберілген мақалалар"
+
+#: .\publication\templates\cabinet.html:43
+msgid "Вы еще ничего не добавили"
+msgstr "Сіз әлі мақала қосқан жоқсыз"
+
+#: .\publication\templates\cabinet.html:47
+msgid "Изменить пароль"
+msgstr "Парольды ауыстыру"
+
+#: .\publication\templates\cabinet.html:49
+msgid "Вы не "
+msgstr "Сіз"
+
+#: .\publication\templates\cabinet.html:49
+msgid "авторизованы"
+msgstr "авторизацияланған жоқсыз"
+
+#: .\publication\templates\cabinet_antiplagiat.html:10
+#: .\publication\templates\cabinet_redactor.html:10
+#: .\publication\templates\cabinet_reviewer.html:10
+msgid "Личный кабинет"
+msgstr "Жеке кабинет"
+
+#: .\publication\templates\cabinet_antiplagiat.html:10
+#: .\publication\templates\cabinet_redactor.html:10
+#: .\publication\templates\cabinet_reviewer.html:10
+msgid "Пользователь"
+msgstr "Қолданушы"
+
+#: .\publication\templates\cabinet_antiplagiat.html:14
+#: .\publication\templates\cabinet_redactor.html:15
+#: .\publication\templates\cabinet_reviewer.html:14
+msgid "Статьи для проверки"
+msgstr "Тексеріске арналған"
+
+#: .\publication\templates\cabinet_antiplagiat.html:21
+#: .\publication\templates\cabinet_antiplagiat.html:46
+#: .\publication\templates\cabinet_redactor.html:22
+#: .\publication\templates\cabinet_redactor.html:47
+#: .\publication\templates\cabinet_redactor.html:71
+#: .\publication\templates\cabinet_redactor.html:100
+#: .\publication\templates\cabinet_redactor.html:129
+#: .\publication\templates\cabinet_reviewer.html:21
+#: .\publication\templates\cabinet_reviewer.html:46
+#: .\publication\templates\cabinet_reviewer.html:75
+#: .\publication\templates\cabinet_reviewer.html:104
+msgid "Тема"
+msgstr "Тақырып"
+
+#: .\publication\templates\cabinet_antiplagiat.html:22
+#: .\publication\templates\cabinet_antiplagiat.html:47
+#: .\publication\templates\cabinet_redactor.html:23
+#: .\publication\templates\cabinet_redactor.html:48
+#: .\publication\templates\cabinet_redactor.html:72
+#: .\publication\templates\cabinet_redactor.html:101
+#: .\publication\templates\cabinet_redactor.html:130
+#: .\publication\templates\cabinet_reviewer.html:22
+#: .\publication\templates\cabinet_reviewer.html:47
+#: .\publication\templates\cabinet_reviewer.html:76
+#: .\publication\templates\cabinet_reviewer.html:105
+msgid "Авторы"
+msgstr "Авторлар"
+
+#: .\publication\templates\cabinet_antiplagiat.html:23
+#: .\publication\templates\cabinet_redactor.html:24
+#: .\publication\templates\cabinet_redactor.html:49
+#: .\publication\templates\cabinet_reviewer.html:23
+msgid "Дата"
+msgstr "Күні"
+
+#: .\publication\templates\cabinet_antiplagiat.html:39
+#: .\publication\templates\cabinet_redactor.html:64
+#: .\publication\templates\cabinet_reviewer.html:39
+#, fuzzy
+#| msgid "Проверенные и опубликованные на сайте"
+msgid "Последние проверенные статьи"
+msgstr "Тексерілген"
+
+#: .\publication\templates\cabinet_antiplagiat.html:48
+#: .\publication\templates\cabinet_redactor.html:73
+#: .\publication\templates\cabinet_redactor.html:102
+#: .\publication\templates\cabinet_redactor.html:131
+#: .\publication\templates\cabinet_reviewer.html:48
+#: .\publication\templates\cabinet_reviewer.html:77
+#: .\publication\templates\cabinet_reviewer.html:106
+msgid "Дата отправки"
+msgstr "Жіберілген күн"
+
+#: .\publication\templates\cabinet_antiplagiat.html:49
+#: .\publication\templates\cabinet_redactor.html:74
+#: .\publication\templates\cabinet_redactor.html:103
+#: .\publication\templates\cabinet_redactor.html:132
+#: .\publication\templates\cabinet_reviewer.html:49
+#: .\publication\templates\cabinet_reviewer.html:78
+#: .\publication\templates\cabinet_reviewer.html:107
+msgid "Дата проверки"
+msgstr "Тексеріс күні"
+
+#: .\publication\templates\cabinet_redactor.html:14
+msgid "Добавить вестник"
+msgstr "Вестник қосу"
+
+#: .\publication\templates\cabinet_redactor.html:40
+msgid "Статьи для проверки оплаты"
+msgstr "Төлемді тексеру мақалалары"
+
+#: .\publication\templates\cabinet_redactor.html:93
+msgid "На доработке"
+msgstr "Қайта жіберуледе"
+
+#: .\publication\templates\cabinet_redactor.html:122
+msgid "Отказано"
+msgstr "Қате"
+
+#: .\publication\templates\cabinet_reviewer.html:68
+msgid "Отправленные на доработку"
+msgstr "Қайтадан жіберілген"
+
+#: .\publication\templates\cabinet_reviewer.html:97
+msgid "Отказанные"
+msgstr "Қате болған"
+
+#: .\publication\templates\include\base_only_publication.html:6
+#: .\publication\templates\seria_detail.html:10
+msgid "Главная"
+msgstr "Басты"
+
+#: .\publication\templates\index.html:22
+msgid "Вестник филологии"
+msgstr "Филология вестнигі"
+
+#: .\publication\templates\index.html:23
+msgid "КУ имени Ш. Валиханова"
+msgstr "Ш.Уалиханов атындағы КУ"
+
+#: .\publication\templates\index.html:37
+msgid "Поиск"
+msgstr "Іздеу"
+
+#: .\publication\templates\index.html:43
+msgid "Выход"
+msgstr "Шығу"
+
+#: .\publication\templates\index.html:45
+msgid "Вход"
+msgstr "Кіру"
+
+#: .\publication\templates\index.html:46
+msgid "Регистрация"
+msgstr "Ргистрация"
+
+#: .\publication\templates\index.html:70
+msgid "Архив"
+msgstr "Архив"
+
+#: .\publication\templates\index.html:72
+msgid "Архив публикации"
+msgstr "Публикациялар архиві"
+
+#: .\publication\templates\index.html:73
+msgid "Архив вестников"
+msgstr "Вестниктар архиві"
+
+#: .\publication\templates\index.html:121
+msgid "Банковские реквизиты"
+msgstr "Банк"
+
+#: .\publication\templates\index.html:133
+msgid "Ссылки"
+msgstr "Сілтемелер"
+
+#: .\publication\templates\index.html:137
+#, fuzzy
+#| msgid "Добавить публикаци"
+msgid "Добавить публикацию"
+msgstr "Публикация қосу"
+
+#: .\publication\templates\index.html:140
+msgid "Контакты"
+msgstr "Контакттар"
+
+#: .\publication\templates\publications.html:28
+msgid "Фильтр"
+msgstr "Фильтр"
+
+#: .\publication\templates\publications.html:31
+msgid "Год"
+msgstr "Жыл"
+
+#: .\publication\templates\publications.html:38
+msgid "Месяц"
+msgstr "Ай"
+
+#: .\publication\templates\search_result.html:5
+#: .\publication\templates\search_result.html:17
+msgid "Результаты поиска"
+msgstr "Сұраныс нәтижесі"
+
+#: .\publication\templates\seria_detail.html:16
+msgid "Описание серии"
+msgstr ""
+
+#~ msgid "Просмотреть все публикации"
+#~ msgstr "Барлык публикациялар"
+
+#~ msgid "Автор"
+#~ msgstr "Автор"
+
+#~ msgid "Файл"
+#~ msgstr "Файл"
+
+#~ msgid "Нет отправленных публикации"
+#~ msgstr "Жіберілген жоқ"
+
+#~ msgid "Нет опубликованных публикации"
+#~ msgstr "Жарияланған жоқ"
+
+#~ msgid "Извините вы не "
+#~ msgstr "Сіз"
+
+#~ msgid "Статус"
+#~ msgstr "Статус"
+
+#~ msgid "Предметы"
+#~ msgstr "Сериялар"
+
+#~ msgid "Рецензенты"
+#~ msgstr "Рецензенттар"
+
+#~ msgid "Комментарии"
+#~ msgstr "Комментариилар"
+
+#~ msgid "Проверено"
+#~ msgstr "Тексерілді"
+
+#~ msgid "Сохранить"
+#~ msgstr "Сақтау"
+
+#~ msgid "Изменить"
+#~ msgstr "Өзгерту"
+
+#~ msgid "О журнале"
+#~ msgstr "Журнал"
+
+#~ msgid "Серии"
+#~ msgstr "Сериялар"
+
+#~ msgid "Ред.коллегия"
+#~ msgstr "Ред.Алқа"
+
+#~ msgid "Этика"
+#~ msgstr "Этикасы"
+
+#~ msgid "Правила"
+#~ msgstr "Ережелер"
